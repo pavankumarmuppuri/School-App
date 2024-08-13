@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Student Details</h2>
+<p><strong>Name:</strong> {{ student[0] }}</p>
+<p><strong>Email:</strong> {{ student[1] }}</p>
+<p><strong>Address:</strong> {{ student[2] }}</p>
+<p><strong>Created At:</strong> {{ student[3] }}</p>
+<p><strong>Class:</strong> {{ student[4] }}</p>
+{% if student[5] %}
+    <p><strong>Image:</strong> <img src="{{ url_for('static', filename='uploads/' ~ student[5]) }}" alt="Student Image">
+    </p>
+{% endif %}
+<a href="{{ url_for('home') }}" class="btn btn-primary mt-3">Back to Student List</a>
+{% endblock %}

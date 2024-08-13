@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Student List</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Created At</th>
+            <th>Class</th>
+            <th>Image</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for student in students %}
+        <tr>
+            <td>{{ student[0] }}</td>
+            <td>{{ student[1] }}</td>
+            <td>{{ student[2] }}</td>
+            <td>{{ student[3] }}</td>
+            <td>{{ student[4] }}</td>
+            <td>
+                {% if student[5] %}
+                <img src="{{ url_for('static', filename='uploads/' + student[5]) }}" alt="Student Image" style="max-width: 100px;">
+                {% endif %}
+            </td>
+            <td>
+                <a href="{{ url_for('view', id=student[0]) }}" class="btn btn-info">View</a>
+                <a href="{{ url_for('edit', id=student[0]) }}" class="btn btn-warning">Edit</a>
+                <form action="{{ url_for('delete', id=student[0]) }}" method="post" style="display:inline;">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
