@@ -17,8 +17,8 @@ if not os.path.exists(UPLOAD_FOLDER):
 def get_db_connection():
     conn = psycopg2.connect(
         dbname='school_db',
-        user='postgres',
-        password='4321',
+        user='username',
+        password='password',
         host='localhost'
     )
     return conn
